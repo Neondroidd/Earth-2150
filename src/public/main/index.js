@@ -3,12 +3,22 @@ var h1 = document.getElementById("Changer");
 
 // Array of text to be display  ed
 var texts = [
+  // English
   "Earth 2150",
+  // Indonesia
   "Bumi 2150",
+  // Jepang
   "アース 2150",
+  // Spanyol
   "Tierra 2150",
+  // Arab
   "الارض 2150",
+  // Korea
   "지구 2150",
+  // Rusia
+  "Земля 2150",
+  // Thailand
+  "โลก 2150",
 ];
 
 // Change the text of the h1 element to the next text in the array
