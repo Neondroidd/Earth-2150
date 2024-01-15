@@ -1,7 +1,7 @@
 // Get the h1 element
 var h1 = document.getElementById("Changer");
 
-// Array of text to be display  ed
+// Array of text to be displayed
 var texts = [
   // English
   "Earth 2150",
