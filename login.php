@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="./public/main/index.js"></script>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary bg-blur" data-bs-theme="dark">
+<body class="d-flex align-items-center py-4 bg-body-tertiary" data-bs-theme="dark">
     <!-- Theme Changer START -->
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
         <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
@@ -133,10 +133,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <!-- Theme Change END -->
 
-    <main class="form-signin w-100 m-auto">
-        <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
-            <img class="mb-4" src="./public/images/earth.png" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <main class="form-signin w-100 m-auto border border-light-subtle">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <img class="d-block mx-auto mb-4" src="./public/images/earth.png" alt="" width="72" height="72">
+            <h1 class="d-block mx-5 mb-4 h3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
                 <input type="username" class="form-control" id="floatingInput" name="username" placeholder="username"
@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </label>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="submit">Login</button>
-            <span class="mb-3 mb-md-0 text-body-secondary">&copy;<span id="year"></span> <a class="text-body-primary"
+            <span class="mb-3 mb-md- text-body-secondary">&copy;<span id="year"></span> <a class="text-body-primary"
                     href="https://www.instagram.com/heyy.orville/" target="_blank"
                     style="text-decoration: none;">Orville</a> | All Rights Reserved
             </span>

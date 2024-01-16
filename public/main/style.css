@@ -4,7 +4,10 @@ body {
 }
 
 .bg-blur {
-  backdrop-filter: blur(8px); /* Adjust the blur level as needed */
+  filter: blur(1px); /* Adjust the blur level as needed */
+}
+.bg-no-blur {
+  filter: blur(0px); /* Adjust the blur level as needed */
 }
 
 .form-signin {
