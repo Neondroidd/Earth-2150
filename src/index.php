@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +68,15 @@
                 <li><a href="#" class="nav-link disabled px-2">NONE</a></li> -->
             </ul>
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-primary me-2">Login</button>
+                <?php
+                session_start();
+                if (!isset($_SESSION["username"])) {
+                    header("Location: login.php");
+                    exit;
+                }
+                ?>
+                <button type="button" class="btn btn-primary me-2"><a href="login.php"
+                        class="text-decoration-none text-light">Login</a></button>
             </div>
         </header>
     </div>
@@ -152,13 +168,12 @@
                     <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/heyy.orville/"
                             target="_blank"><i class="bi bi-instagram"></i></a></li>
                     <li class="ms-3"><a class="text-body-secondary"
-                            href="https://www.facebook.com/orvillegiovanni.sambono/"><i class="bi bi-facebook"></i></a>
-                    </li>
+                            href="https://www.facebook.com/orvillegiovanni.sambono/" target="_blank"><i
+                                class="bi bi-facebook"></i></a></li>
                 </ul>
             </div>
         </footer>
     </div>
-
 
 </body>
 

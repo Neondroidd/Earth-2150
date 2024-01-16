@@ -1,4 +1,4 @@
-//Quote
+// Fetch and display a random quote
 async function fetchJson(url) {
   try {
     const response = await fetch(url);
@@ -12,6 +12,20 @@ async function fetchJson(url) {
     throw error;
   }
 }
+
+// Display quote content
+function displayContent(content) {
+  const contentElement = document.getElementById("container-quotes");
+  contentElement.textContent = content;
+}
+
+// Display quote author
+function displayAuthor(author) {
+  const authorElement = document.getElementById("author-quotes");
+  authorElement.textContent = author;
+}
+
+// Fetch a random quote and display it
 fetchJson("https://api.quotable.io/random")
   .then((data) => {
     displayContent(data.content);
@@ -20,16 +34,6 @@ fetchJson("https://api.quotable.io/random")
   .catch((error) => {
     console.error("Error:", error);
   });
-
-function displayContent(content) {
-  const contentElement = document.getElementById("container-quotes");
-  contentElement.textContent = content;
-}
-
-function displayAuthor(author) {
-  const authorElement = document.getElementById("author-quotes");
-  authorElement.textContent = author;
-}
 
 // Get the h1 element
 var h1 = document.getElementById("Changer");
