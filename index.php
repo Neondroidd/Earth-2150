@@ -1,5 +1,20 @@
 <?php
 session_start();
+
+// Logout logic
+if (isset($_POST['logout'])) {
+    // Unset all of the session variables
+    $_SESSION = array();
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to login page
+    header("Location: login.php");
+    exit;
+}
+
+// Check if the user is not logged in, then redirect to the login page
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
     exit;
@@ -12,13 +27,19 @@ if (!isset($_SESSION["username"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/src/public/main/style.css">
+    <link rel="shortcut icon" href="./public/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./public/main/style.css">
     <title>Earth 2150</title>
-    <!-- BOOSTRAP & JS -->
-    <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/main/index.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="./public/main/index.js"></script>
 </head>
+
 
 <body data-bs-theme="dark">
     <!-- Theme Changer START -->
@@ -51,36 +72,35 @@ if (!isset($_SESSION["username"])) {
     </div>
     <!-- Theme Change END -->
 
-    <!-- NAVBAR START -->
     <div class="container col-xxl-12">
         <header
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                    <img src="/images/earth.png" alt="Logo" height="30" width="30"> <span class="fs-4">Earth 2150</span>
+                    <img src="./public/images/earth.png" alt="Logo" height="30" width="30"> <span class="fs-4">Earth
+                        2150</span>
                 </a>
             </div>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="#" class="nav-link px-2">Home</a></li>
                 <li><a href="#Teknologi" class="nav-link px-2">Teknologi</a></li>
                 <li><a href="#luarAngkasa" class="nav-link px-2">Luar Angkasa</a></li>
-                <!-- <li><a href="#" class="nav-link disabled px-2">NONE</a></li>
-                <li><a href="#" class="nav-link disabled px-2">NONE</a></li> -->
             </ul>
             <div class="col-md-3 text-end">
-                <?php
-                session_start();
-                if (!isset($_SESSION["username"])) {
-                    header("Location: login.php");
-                    exit;
-                }
-                ?>
-                <button type="button" class="btn btn-primary me-2"><a href="login.php"
+                <?php if (isset($_SESSION["username"])) : ?>
+                <!-- If session is active, show Logout button -->
+                <form method="post" action="">
+                    <button type="submit" class="btn btn-danger" name="logout">Logout</button>
+                </form>
+                <?php else : ?>
+                <!-- If session is not active, show Login button -->
+                <button type="button" class="btn btn-primary me-2"><a href="/login.php"
                         class="text-decoration-none text-light">Login</a></button>
+                <?php endif; ?>
             </div>
         </header>
     </div>
-    <!-- NAVBAR END -->
+    <!-- Navbar END -->
 
     <main>
         <div class="container col-xxl-12 px-4 py-5">
@@ -88,7 +108,7 @@ if (!isset($_SESSION["username"])) {
                 <div class="col-10 col-sm-8 col-lg-6">
                     <video autoplay loop muted playsinline class="img-fluid rounded-3 shadow-sm" width="100%"
                         height="100%">
-                        <source src="/videos/Earth.mp4" type="video/mp4">
+                        <source src="./public/videos/Earth.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-lg-6">
@@ -142,7 +162,7 @@ if (!isset($_SESSION["username"])) {
                 <!-- First column content -->
                 <div class="d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                        <img src="/images/earth.png" alt="Logo" height="30" width="30">
+                        <img src="./public/images/earth.png" alt="Logo" height="30" width="30">
                     </a>
                     <span class="mb-3 mb-md-0 text-body-secondary">&copy;<span id="year"></span> <a
                             class="text-body-primary" href="https://www.instagram.com/heyy.orville/" target="_blank"
@@ -156,7 +176,7 @@ if (!isset($_SESSION["username"])) {
                     <blockquote class="blockquote">
                         <p id="container-quotes">A well-known quote, contained in a blockquote element.</p>
                     </blockquote>
-                    <figcaption id="author-quotes" class="blockquote-footer">
+                    <figcaption id="author-quotes" class="blockquote-footer"> ND
                     </figcaption>
                 </figure>
             </div>

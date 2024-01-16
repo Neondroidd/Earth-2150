@@ -1,5 +1,4 @@
 <?php
-// Replace the following placeholders with your actual database credentials
 $servername = "localhost";
 $username = "Orville";
 $password = "Orville610";
