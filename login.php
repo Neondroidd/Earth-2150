@@ -61,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // Redirect to the index page
                             header("location: index.php");
                         } else {
-                            // Display an error message if password is not valid
+                            // Set login error message
                             $login_err = "Invalid username or password.";
                         }
                     }
                 } else {
-                    // Display an error message if username doesn't exist
+                    // Set login error message
                     $login_err = "Invalid username or password.";
                 }
             } else {
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -98,43 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <!-- Bootstrap JS and Popper.js -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Your custom scripts -->
     <script src="./public/main/index.js"></script>
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary" data-bs-theme="dark">
-    <!-- Theme Changer START -->
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-            <div class="icon"><i class="bi bi-circle-half"></i></div>
-        </button>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                    aria-pressed="false">
-                    <i class="bi bi-sun-fill"></i> Light
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark"
-                    aria-pressed="true">
-                    <i class="bi bi-moon-stars-fill"></i> Dark
-                </button>
-            </li>
-            <li>
-                <button id="auto" type="button" class="dropdown-item d-flex align-items-center"
-                    data-bs-theme-value="auto" aria-pressed="false">
-                    <i class="bi bi-circle-half"></i> Auto
-                </button>
-            </li>
-        </ul>
-    </div>
-    <!-- Theme Change END -->
-
     <main class="form-signin w-100 m-auto border border-light-subtle">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="loginForm">
             <img class="d-block mx-auto mb-4" src="./public/images/earth.png" alt="" width="72" height="72">
             <h1 class="d-block mx-5 mb-4 h3 fw-normal">Please sign in</h1>
 
@@ -148,14 +118,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     required>
                 <label for="floatingPassword">Password</label>
             </div>
+            <button class="btn btn-primary w-100 py-2" type="button" onclick="validateLoginForm()">Login</button>
 
-            <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Remember me
-                </label>
+            <!-- Display the login error alert when applicable -->
+            <div id="loginAlert" class="alert alert-danger alert-dismissible fade my-3" role="alert" style="display: none;">
+                Invalid username or password.
+                <button type="button" class="btn-close" onclick="closeLoginAlert()"></button>
             </div>
-            <button class="btn btn-primary w-100 py-2" type="submit" name="submit">Login</button>
+
             <span class="mb-3 mb-md- text-body-secondary">&copy;<span id="year"></span> <a class="text-body-primary"
                     href="https://www.instagram.com/heyy.orville/" target="_blank"
                     style="text-decoration: none;">Orville</a> | All Rights Reserved
@@ -163,6 +133,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </main>
 
+    <script>
+        function validateLoginForm() {
+            var form = document.getElementById('loginForm');
+            form.submit();
+        }
+
+        function closeLoginAlert() {
+            document.getElementById('loginAlert').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

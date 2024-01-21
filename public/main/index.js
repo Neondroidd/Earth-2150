@@ -1,3 +1,23 @@
+// Display an alert in the top-right corner
+function showAlert(message) {
+	const alertDiv = document.createElement("div");
+	alertDiv.className = "position-fixed top-0 end-0 p-3";
+	alertDiv.style.zIndex = "1050";
+	alertDiv.innerHTML = `
+			<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header">
+					<strong class="me-auto">Alert</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body">${message}</div>
+			</div>
+		`;
+	document.body.appendChild(alertDiv);
+
+	const toast = new bootstrap.Toast(alertDiv.querySelector(".toast"));
+	toast.show();
+}
+
 // Function to handle logout
 function logout() {
 	window.location.href = "index.php?logout=1";
@@ -20,8 +40,8 @@ async function fetchJson(url) {
 
 // Display quote content
 function displayContent(data) {
-  const contentElement = document.getElementById("container-quotes");
-  contentElement.textContent = data;
+	const contentElement = document.getElementById("container-quotes");
+	contentElement.textContent = data;
 }
 
 // Display quote author
@@ -40,43 +60,55 @@ fetchJson("https://api.quotable.io/random")
 		console.error("Error:", error);
 	});
 
-// Get the h1 element
-var h1 = document.getElementById("Changer");
+document.addEventListener("DOMContentLoaded", function () {
+	// Get the element by ID
+	var changerElement = document.getElementById("Changer");
 
-// Array of text to be displayed
-var texts = [
-	// English
-	"Earth 2150",
-	// Indonesia
-	"Bumi 2150",
-	// Jepang
-	"アース 2150",
-	// Spanyol
-	"Tierra 2150",
-	// Arab
-	"الارض 2150",
-	// Korea
-	"지구 2150",
-	// Rusia
-	"Земля 2150",
-	// Thailand
-	"โลก 2150",
-];
+	// Check if the element is found
+	if (changerElement) {
+		// Array of text to be displayed
+		var texts = [
+			// English
+			"Earth 2150",
+			// Indonesia
+			"Bumi 2150",
+			// Jepang
+			"アース 2150",
+			// Spanyol
+			"Tierra 2150",
+			// Arab
+			"الارض 2150",
+			// Korea
+			"지구 2150",
+			// Rusia
+			"Земля 2150",
+			// Thailand
+			"โลก 2150",
+		];
 
-// Change the text of the h1 element to the next text in the array
-h1.textContent = texts[0];
+		// Change the innerHTML of the element to the first text in the array
+		changerElement.innerHTML = texts[0];
 
-// Function to change the text of the h1 element to the next text in the array
-function changeText() {
-	// Get the current index
-	var index = texts.indexOf(h1.textContent);
+		// Function to change the innerHTML of the element to the next text in the array
+		function changeText() {
+			// Get the current index
+			var index = texts.indexOf(changerElement.innerHTML);
 
-	// Change the text to the next text in the array
-	h1.textContent = texts[(index + 1) % texts.length];
-}
+			// Change the innerHTML to the next text in the array
+			changerElement.innerHTML = texts[(index + 1) % texts.length];
+		}
 
-// Change the text every 3 seconds
-setInterval(changeText, 500);
+		// Change the text every 3 seconds
+		setInterval(changeText, 500);
+
+		// Call Function
+		changeText();
+
+		console.log("Script loaded");
+	} else {
+		console.error("Element with ID 'Changer' not found.");
+	}
+});
 
 // DATE
 const currentYear = new Date().getFullYear();
@@ -135,8 +167,6 @@ function updateThemeChangerIcon(theme) {
 		}
 	}
 }
-
-console.log("Script loaded");
 
 // Add click event listeners to the theme buttons
 document.querySelectorAll("button[data-bs-theme-value]").forEach((button) => {

@@ -37,6 +37,7 @@ if (!isset($_SESSION["username"])) {
     <!-- Bootstrap JS and Popper.js -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Your custom scripts -->
     <script src="./public/main/index.js"></script>
 </head>
 
