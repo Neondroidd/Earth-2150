@@ -37,6 +37,9 @@ if (!isset($_SESSION["username"])) {
     <!-- Bootstrap JS and Popper.js -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Custom animations -->
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+    <script src="./node_modules/wowjs/dist/wow.min.js"></script>
     <!-- Your custom scripts -->
     <script src="./public/main/index.js"></script>
 </head>
@@ -144,8 +147,8 @@ if (!isset($_SESSION["username"])) {
         </div>
 
         <!-- section 2 -->
-        <div id="luarAngkasa" class="container col-xxl-14 px-4 py-5">
-            <h1 class="display-5 fw-bold lh-1 mb-3">Pencapaian Luar Biasa Manusia di Luar Angkasa</h1>
+        <div id="luarAngkasa" class="container col-xxl-14 px-4 py-5"">
+            <h1 class=" display-5 fw-bold lh-1 mb-3">Pencapaian Luar Biasa Manusia di Luar Angkasa</h1>
             <p class="lead">Pada tahun 2150, manusia telah meraih kemajuan luar angkasa yang luar biasa. Stasiun luar
                 angkasa telah menjadi pusat penelitian dan eksplorasi, menjadi pangkalan untuk misi antarplanet dan
                 kolonisasi di luar angkasa. Penerbangan antariksa menjadi rutin, dengan transportasi antarplanet yang
@@ -161,7 +164,7 @@ if (!isset($_SESSION["username"])) {
         <footer class="row py-3 my-4 border-top">
             <div class="col-md-4">
                 <!-- First column content -->
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center wow bounceInRight">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                         <img src="./public/images/earth.png" alt="Logo" height="30" width="30">
                     </a>
